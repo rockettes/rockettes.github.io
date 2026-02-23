@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro Coach IA</title>
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- iOS PWA support -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Pro Coach IA" />
+  <link rel="apple-touch-icon" href="icons/icon.svg" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#ff4b4b" />
+  <meta name="msapplication-TileColor" content="#ff4b4b" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #1a1a2e;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .logo {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%       { transform: scale(1.05); opacity: 0.85; }
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #aaa;
+      text-align: center;
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255,75,75,0.3);
+      border-top-color: #ff4b4b;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .btn {
+      margin-top: 8px;
+      padding: 12px 32px;
+      background: #ff4b4b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: none;
+    }
+
+    .btn:hover { background: #e03e3e; }
+  </style>
+</head>
+<body>
+
+  <!-- Ícone SVG inline -->
+  <div class="logo">
+    <svg width="100" height="100" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <rect width="512" height="512" rx="102" fill="#ff4b4b"/>
+      <circle cx="256" cy="243" r="159" fill="none" stroke="white" stroke-width="8" opacity="0.3"/>
+      <rect x="154" y="223" width="204" height="41" rx="20" fill="white"/>
+      <rect x="123" y="194" width="46" height="97" rx="23" fill="white"/>
+      <rect x="343" y="194" width="46" height="97" rx="23" fill="white"/>
+      <circle cx="256" cy="123" r="13" fill="white"/>
+      <circle cx="215" cy="148" r="9" fill="white" opacity="0.6"/>
+      <circle cx="297" cy="148" r="9" fill="white" opacity="0.6"/>
+      <polyline points="154,333 184,333 200,302 218,364 236,320 256,333 276,333 295,307 314,353 333,333 358,333"
+                stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <h1>Pro Coach IA</h1>
+  <p>Periodização científica para atletas IFBB Pro</p>
+  <div class="spinner" id="spinner"></div>
+  <a class="btn" id="btn-manual" href="https://bodybuildingcoach.streamlit.app" target="_top">
+    Abrir App →
+  </a>
+
+  <script>
+    // Registrar Service Worker
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").catch(console.error);
+    }
+
+    // Redirecionar para o Streamlit após 1.5s
+    // Se demorar mais de 4s, mostra botão manual
+    const APP_URL = "https://bodybuildingcoach.streamlit.app";
+
+    setTimeout(() => {
+      window.location.href = APP_URL;
+    }, 1500);
+
+    setTimeout(() => {
+      document.getElementById("spinner").style.display = "none";
+      document.getElementById("btn-manual").style.display = "inline-block";
+    }, 4000);
+  </script>
+
+</body>
+</html>

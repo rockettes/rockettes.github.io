@@ -1,0 +1,17 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="102" fill="#ff4b4b"/>
+  <circle cx="256" cy="243" r="159" fill="none" stroke="white" stroke-width="8" opacity="0.3"/>
+  <!-- Haltere -->
+  <rect x="154" y="223" width="204" height="41" rx="20" fill="white"/>
+  <rect x="123" y="194" width="46" height="97" rx="23" fill="white"/>
+  <rect x="343" y="194" width="46" height="97" rx="23" fill="white"/>
+  <!-- DNA dots -->
+  <circle cx="256" cy="123" r="13" fill="white"/>
+  <circle cx="215" cy="148" r="9" fill="white" opacity="0.6"/>
+  <circle cx="297" cy="148" r="9" fill="white" opacity="0.6"/>
+  <!-- Linha VFC/EEG -->
+  <polyline points="154,333 184,333 200,302 218,364 236,320 256,333 276,333 295,307 314,353 333,333 358,333"
+            stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Texto -->
+  <text x="256" y="440" text-anchor="middle" fill="white" font-size="48" font-weight="bold" font-family="Arial, sans-serif">PRO COACH IA</text>
+</svg>
